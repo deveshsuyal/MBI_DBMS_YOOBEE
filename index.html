@@ -1,52 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Lecture Summaries</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #111; }
+    body { font-family: system-ui, sans-serif; background: #f0f0f0; color: #111; }
 
     header { background: #111; color: #fff; text-align: center; padding: 2.5rem 1rem; }
     header h1 { font-size: 2rem; font-weight: 600; }
-    header p { color: #aaa; margin-top: 0.5rem; }
+    header p { color: #aaa; margin-top: 0.5rem; font-size: 0.9rem; }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 1rem; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
 
-    .card { background: #fff; border-radius: 12px; padding: 1.25rem;
-            border: 1px solid #e0e0e0; transition: transform 0.2s; }
-    .card:hover { transform: translateY(-4px); }
+    a.card { background: #fff; border-radius: 12px; padding: 1.25rem;
+             border: 1px solid #e0e0e0; text-decoration: none; color: inherit;
+             display: block; transition: transform 0.2s, box-shadow 0.2s; }
+    a.card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
 
     .lecture-num { font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
                    color: #888; margin-bottom: 6px; }
     .card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
     .card p { font-size: 0.875rem; color: #555; line-height: 1.6; }
 
-    .tag { display: inline-block; margin-top: 12px; font-size: 11px; padding: 3px 10px;
-           border-radius: 20px; background: #eef; color: #335; font-weight: 600; }
+    .open-btn { display: inline-block; margin-top: 14px; font-size: 12px;
+                padding: 5px 12px; border-radius: 20px; background: #111;
+                color: #fff; font-weight: 500; }
+
+    footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.8rem; }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>My Lecture Summaries</h1>
-    <p>COMP101 — Replace with your subject</p>
-  </header>
+<header>
+  <h1>My Lecture Summaries</h1>
+  <p>Subject Name — Replace this with your course</p>
+</header>
 
-  <div class="grid">
+<div class="grid">
 
-    <div class="card">
-      <div class="lecture-num">Lecture 01</div>
-      <h2>Your Lecture Title</h2>
-      <p>Write a short 2–3 sentence summary of what was covered in this lecture.</p>
-      <span class="tag">Week 1</span>
-    </div>
+  <a class="card" href="lectures/lecture-01.pdf" target="_blank">
+    <div class="lecture-num">Lecture 01</div>
+    <h2>Title of Lecture 1</h2>
+    <p>Short summary of what this lecture covers.</p>
+    <span class="open-btn">Open PDF</span>
+  </a>
 
-    <!-- Copy the card block above and repeat for each lecture -->
+  <a class="card" href="lectures/lecture-02.pdf" target="_blank">
+    <div class="lecture-num">Lecture 02</div>
+    <h2>Title of Lecture 2</h2>
+    <p>Short summary of what this lecture covers.</p>
+    <span class="open-btn">Open PDF</span>
+  </a>
 
-  </div>
+  <a class="card" href="lectures/lecture-03.pdf" target="_blank">
+    <div class="lecture-num">Lecture 03</div>
+    <h2>Title of Lecture 3</h2>
+    <p>Short summary of what this lecture covers.</p>
+    <span class="open-btn">Open PDF</span>
+  </a>
+
+  <!-- Copy and paste more cards as needed -->
+
+</div>
+
+<footer>Updated 2026 · Hosted on GitHub Pages</footer>
 
 </body>
 </html>
