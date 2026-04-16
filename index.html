@@ -3,70 +3,252 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Lecture Summaries</title>
+  <title>Database Management — Lecture Summaries</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #f0f0f0; color: #111; }
 
-    header { background: #111; color: #fff; text-align: center; padding: 2.5rem 1rem; }
-    header h1 { font-size: 2rem; font-weight: 600; }
-    header p { color: #aaa; margin-top: 0.5rem; font-size: 0.9rem; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      min-height: 100vh;
+    }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1rem; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    header {
+      background: #0a0a0a;
+      border-bottom: 1px solid #222;
+      padding: 2.5rem 1rem 2rem;
+      text-align: center;
+    }
 
-    a.card { background: #fff; border-radius: 12px; padding: 1.25rem;
-             border: 1px solid #e0e0e0; text-decoration: none; color: inherit;
-             display: block; transition: transform 0.2s, box-shadow 0.2s; }
-    a.card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    .header-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 12px;
+    }
 
-    .lecture-num { font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
-                   color: #888; margin-bottom: 6px; }
-    .card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
-    .card p { font-size: 0.875rem; color: #555; line-height: 1.6; }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
 
-    .open-btn { display: inline-block; margin-top: 14px; font-size: 12px;
-                padding: 5px 12px; border-radius: 20px; background: #111;
-                color: #fff; font-weight: 500; }
+    header p {
+      color: #555;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
 
-    footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.8rem; }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat { text-align: center; }
+    .stat-n { font-size: 1.5rem; font-weight: 600; color: #fff; }
+    .stat-l { font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      border: 1px solid #1a1a1a;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    a.card {
+      background: #111;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border: 0.5px solid #1e1e1e;
+      transition: background 0.2s;
+    }
+
+    a.card:hover { background: #161616; }
+
+    .session-num {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #444;
+    }
+
+    .card h2 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #e0e0e0;
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 10px;
+      border-top: 0.5px solid #1e1e1e;
+    }
+
+    .badge {
+      font-size: 10px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .b-blue   { background: #0d2240; color: #5ba3f5; }
+    .b-purple { background: #1a1040; color: #a78bfa; }
+    .b-teal   { background: #071e1a; color: #2dd4bf; }
+    .b-amber  { background: #1f1200; color: #fbbf24; }
+    .b-red    { background: #200a0a; color: #f87171; }
+
+    .open-icon {
+      font-size: 14px;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #333;
+      font-size: 0.75rem;
+      border-top: 1px solid #161616;
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>My Lecture Summaries</h1>
-  <p>Subject Name — Replace this with your course</p>
+  <div class="header-tag">Course Notes</div>
+  <h1>Database Management</h1>
+  <p>All sessions — click any card to open the PDF</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">11</div><div class="stat-l">Sessions</div></div>
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">Topics</div></div>
+    <div class="stat"><div class="stat-n">PDF</div><div class="stat-l">Format</div></div>
+  </div>
 </header>
 
 <div class="grid">
 
-  <a class="card" href="lectures/lecture-01.pdf" target="_blank">
-    <div class="lecture-num">Lecture 01</div>
-    <h2>Title of Lecture 1</h2>
-    <p>Short summary of what this lecture covers.</p>
-    <span class="open-btn">Open PDF</span>
+  <a class="card" href="lectures/Session 1 Overview of Database Management Principles.pdf" target="_blank">
+    <div class="session-num">Session 01</div>
+    <h2>Overview of Database Management Principles</h2>
+    <div class="card-footer">
+      <span class="badge b-blue">Foundations</span>
+      <span class="open-icon">↗</span>
+    </div>
   </a>
 
-  <a class="card" href="lectures/lecture-02.pdf" target="_blank">
-    <div class="lecture-num">Lecture 02</div>
-    <h2>Title of Lecture 2</h2>
-    <p>Short summary of what this lecture covers.</p>
-    <span class="open-btn">Open PDF</span>
+  <a class="card" href="lectures/Session 2 Enhanced Entity-Relationship (EER) Modeling.pdf" target="_blank">
+    <div class="session-num">Session 02</div>
+    <h2>Enhanced Entity-Relationship (EER) Modeling</h2>
+    <div class="card-footer">
+      <span class="badge b-purple">ER Modeling</span>
+      <span class="open-icon">↗</span>
+    </div>
   </a>
 
-  <a class="card" href="lectures/lecture-03.pdf" target="_blank">
-    <div class="lecture-num">Lecture 03</div>
-    <h2>Title of Lecture 3</h2>
-    <p>Short summary of what this lecture covers.</p>
-    <span class="open-btn">Open PDF</span>
+  <a class="card" href="lectures/Session 3 Understanding Entities and Attributes in ER Modeling.pdf" target="_blank">
+    <div class="session-num">Session 03</div>
+    <h2>Understanding Entities and Attributes in ER Modeling</h2>
+    <div class="card-footer">
+      <span class="badge b-purple">ER Modeling</span>
+      <span class="open-icon">↗</span>
+    </div>
   </a>
 
-  <!-- Copy and paste more cards as needed -->
+  <a class="card" href="lectures/Session 4 Database Design Phases.pdf" target="_blank">
+    <div class="session-num">Session 04</div>
+    <h2>Database Design Phases</h2>
+    <div class="card-footer">
+      <span class="badge b-teal">Design</span>
+      <span class="open-icon">↗</span>
+    </div>
+  </a>
+
+  <a class="card" href="lectures/Session 5 Tutorial Database Design and Analysis.pdf" target="_blank">
+    <div class="session-num">Session 05</div>
+    <h2>Tutorial — Database Design and Analysis</h2>
+    <div class="card-footer">
+      <span class="badge b-teal">Design</span>
+      <span class="open-icon">↗</span>
+    </div>
+  </a>
+
+  <a class="card" href="lectures/Session 6 Functional Dependencies & Normalization in Relational Databases.pdf" target="_blank">
+    <div class="session-num">Session 06</div>
+    <h2>Functional Dependencies & Normalization in Relational Databases</h2>
+    <div class="card-footer">
+      <span class="badge b-amber">Normalization</span>
+      <span class="open-icon">↗</span>
+    </div>
+  </a>
+
+  <a class="card" href="lectures/Session 7 Functional Dependencies & Normalization in Relational Databases e.pdf" target="_blank">
+    <div class="session-num">Session 07</div>
+    <h2>Functional Dependencies & Normalization — Extended</h2>
+    <div class="card-footer">
+      <span class="badge b-amber">Normalization</span>
+      <span class="open-icon">↗</span>
+    </div>
+  </a>
+
+  <a class="card" href="lectures/Session 8 SQL Handout.pdf" target="_blank">
+    <div class="session-num">Session 08</div>
+    <h2>SQL Handout</h2>
+    <div class="card-footer">
+      <span class="badge b-blue">SQL</span>
+      <span class="open-icon">↗</span>
+    </div>
+  </a>
+
+  <a class="card" href="lectures/Session 9 SQL Handout.pdf" target="_blank">
+    <div class="session-num">Session 09</div>
+    <h2>SQL Handout</h2>
+    <div class="card-footer">
+      <span class="badge b-blue">SQL</span>
+      <span class="open-icon">↗</span>
+    </div>
+  </a>
+
+  <a class="card" href="lectures/Session 10 SQL Handout.pdf" target="_blank">
+    <div class="session-num">Session 10</div>
+    <h2>SQL Handout</h2>
+    <div class="card-footer">
+      <span class="badge b-blue">SQL</span>
+      <span class="open-icon">↗</span>
+    </div>
+  </a>
+
+  <a class="card" href="lectures/Session 11 Database Application Security.pdf" target="_blank">
+    <div class="session-num">Session 11</div>
+    <h2>Database Application Security</h2>
+    <div class="card-footer">
+      <span class="badge b-red">Security</span>
+      <span class="open-icon">↗</span>
+    </div>
+  </a>
 
 </div>
 
-<footer>Updated 2026 · Hosted on GitHub Pages</footer>
+<footer>Database Management · Hosted on GitHub Pages</footer>
 
 </body>
 </html>
